@@ -2,7 +2,7 @@ export function baseUrl(baseUrl) {
   // extension code here
 
   const reAbsUrl = /^[\w+]+:\/\//;
-  baseUrl = baseUrl.trim().replaceAll(/[\/\.]+$/g, '') + '/'; // make sure baseUrl ends with one '/'
+  baseUrl = baseUrl.trim().replaceAll(/[\/]+$/g, '/'); // if multiple '/' at the end, just keep one
   return {
     walkTokens(token) {
       if (!['link', 'image'].includes(token.type)) {
@@ -22,7 +22,7 @@ export function baseUrl(baseUrl) {
         try {
           const baseUrlFromRoot = baseUrl.startsWith('/');
           const dummy = 'http://__dummy__';
-          const temp = new URL(baseUrl + token.href, dummy).href;
+          const temp = new URL(token.href, new URL(baseUrl, dummy)).href;
           token.href = temp.slice(dummy.length + (baseUrlFromRoot ? 0 : 1));
         } catch (e) {
           // ignore

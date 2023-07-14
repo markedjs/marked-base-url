@@ -81,10 +81,10 @@ describe('baseUrl', () => {
 `);
   });
 
-  test('domain folder vs relative path', () => {
-    marked.use(baseUrl('https://example.com/folder'));
+  test('domain file vs relative path', () => {
+    marked.use(baseUrl('https://example.com/file.html'));
     expect(marked.parse('[my url](./relative)')).toMatchInlineSnapshot(`
-"<p><a href="https://example.com/folder/relative">my url</a></p>
+"<p><a href="https://example.com/relative">my url</a></p>
 "
 `);
   });
@@ -106,7 +106,7 @@ describe('baseUrl', () => {
   });
 
   test('relative baseUrl vs relative path', () => {
-    marked.use(baseUrl('folder'));
+    marked.use(baseUrl('folder/file.html'));
     expect(marked.parse('[my url](relative)')).toMatchInlineSnapshot(`
 "<p><a href="folder/relative">my url</a></p>
 "
@@ -114,7 +114,7 @@ describe('baseUrl', () => {
   });
 
   test('locally absolute baseUrl vs relative path', () => {
-    marked.use(baseUrl('/folder'));
+    marked.use(baseUrl('/folder/file.html'));
     expect(marked.parse('[my url](./relative)')).toMatchInlineSnapshot(`
 "<p><a href="/folder/relative">my url</a></p>
 "
