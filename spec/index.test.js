@@ -129,6 +129,14 @@ describe('baseUrl', () => {
 `);
   });
 
+  test('unchanged as baseUrl is not a folder', () => {
+    marked.use(baseUrl('folder'));
+    expect(marked.parse('[my url](relative)')).toMatchInlineSnapshot(`
+"<p><a href="relative">my url</a></p>
+"
+`);
+  });
+
   test('locally absolute baseUrl vs locally absolute path', () => {
     marked.use(baseUrl('/folder'));
     expect(marked.parse('[my url](/relative)')).toMatchInlineSnapshot(`
