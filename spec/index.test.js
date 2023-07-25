@@ -65,6 +65,22 @@ describe('baseUrl', () => {
 `);
   });
 
+  test('absolute path vs relative baseUrl', () => {
+    marked.use(baseUrl('./relative/folder/'));
+    expect(marked.parse('[my url](https://example.org/absolute)')).toMatchInlineSnapshot(`
+"<p><a href="https://example.org/absolute">my url</a></p>
+"
+`);
+  });
+
+  test('absolute path vs root baseUrl', () => {
+    marked.use(baseUrl('/root/folder/'));
+    expect(marked.parse('[my url](https://example.org/absolute)')).toMatchInlineSnapshot(`
+"<p><a href="https://example.org/absolute">my url</a></p>
+"
+`);
+  });
+
   test('domain folder base vs locally absolute path', () => {
     marked.use(baseUrl('https://example.com/folder'));
     expect(marked.parse('[my url](/relative)')).toMatchInlineSnapshot(`
