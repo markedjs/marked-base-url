@@ -6,6 +6,7 @@
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
   "type": "module",
+  "types": "./src/index.d.ts",
   "keywords": [
     "marked",
     "extension",
