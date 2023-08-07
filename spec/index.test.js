@@ -3,10 +3,7 @@ import { baseUrl } from '../src/index.js';
 
 describe('baseUrl', () => {
   beforeEach(() => {
-    const opts = marked.getDefaults();
-    opts.mangle = false; // to temporarily disable the warning message
-    opts.headerIds = false; // to temporarily disable the warning message
-    marked.setOptions(opts);
+    marked.setOptions(marked.getDefaults());
   });
 
   test('domain vs locally absolute path', () => {
