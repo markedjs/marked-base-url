@@ -5,6 +5,7 @@
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
+  "types": "./src/index.d.ts",
   "type": "module",
   "keywords": [
     "marked",
@@ -25,6 +26,7 @@
   "scripts": {
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
+    "test:types": "tsd -t src/index.d.ts -f types_test/index.test-d.ts",
     "lint": "eslint .",
     "build": "rollup -c rollup.config.js"
   },
@@ -59,6 +61,16 @@
     "jest-cli": "^29.6.2",
     "marked": "^7.0.0",
     "rollup": "^3.27.2",
-    "semantic-release": "^21.0.7"
+    "semantic-release": "^21.0.7",
+    "tsd": "^0.28.1"
+  },
+  "tsd": {
+    "compilerOptions": {
+      "paths": {
+        "marked-base-url": [
+          "./src"
+        ]
+      }
+    }
   }
 }
