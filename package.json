@@ -1,6 +1,6 @@
 {
   "name": "marked-base-url",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "marked base url",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
