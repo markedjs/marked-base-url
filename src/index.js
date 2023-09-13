@@ -43,6 +43,6 @@ export function baseUrl(base) {
           // ignore
         }
       }
-    },
+    }
   };
 }
