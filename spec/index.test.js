@@ -173,4 +173,20 @@ describe('baseUrl', () => {
 "
 `);
   });
+
+  test('local reference link vs regular bareUrl', () => {
+    marked.use(baseUrl('http://example.com/'));
+    expect(marked.parse('[my url](#anchor)')).toMatchInlineSnapshot(`
+"<p><a href="#anchor">my url</a></p>
+"
+`);
+  });
+
+  test('local reference link vs locally absolute baseUrl', () => {
+    marked.use(baseUrl('/a/b/c/'));
+    expect(marked.parse('[my url](#anchor)')).toMatchInlineSnapshot(`
+"<p><a href="#anchor">my url</a></p>
+"
+`);
+  });
 });
