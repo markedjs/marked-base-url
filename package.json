@@ -56,7 +56,7 @@
     "babel-jest": "^29.7.0",
     "globals": "^15.9.0",
     "jest-cli": "^29.7.0",
-    "marked": "^13.0.2",
+    "marked": "^13.0.3",
     "rollup": "^4.19.1",
     "semantic-release": "^24.0.0",
     "tsd": "^0.31.1"
