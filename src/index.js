@@ -27,7 +27,7 @@ export function baseUrl(base) {
       if (isBaseAbsolute) {
         try {
           token.href = new URL(token.href, base).href;
-        } catch (e) {
+        } catch {
           // ignore
         }
       } else {
@@ -39,10 +39,10 @@ export function baseUrl(base) {
         try {
           const temp = new URL(token.href, dummyBaseUrl).href;
           token.href = temp.slice(dummyUrlLength);
-        } catch (e) {
+        } catch {
           // ignore
         }
       }
-    }
+    },
   };
 }
