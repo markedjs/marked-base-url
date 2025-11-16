@@ -6,6 +6,6 @@ declare module 'marked-base-url' {
    * @return A MarkedExtension to be passed to `marked.use()`
    */
   export function baseUrl(
-    baseUrl: string
+    baseUrl: string,
   ): import('marked').MarkedExtension;
 }
