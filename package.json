@@ -24,8 +24,8 @@
     }
   },
   "scripts": {
-    "test": "jest --verbose",
-    "test:cover": "jest --coverage",
+    "test": "node --test",
+    "test:cover": "node --experimental-test-coverage --test",
     "test:types": "tsd -t src/index.d.ts -f types_test/index.test-d.ts",
     "lint": "eslint",
     "format": "eslint --fix",
@@ -45,8 +45,6 @@
     "marked": ">= 4 < 19"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
     "@markedjs/eslint-config": "^1.0.14",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
@@ -54,10 +52,8 @@
     "@semantic-release/github": "^12.0.8",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "babel-jest": "^30.3.0",
     "eslint": "^10.5.0",
     "globals": "^17.6.0",
-    "jest-cli": "^30.4.2",
     "marked": "^18.0.5",
     "rollup": "^4.62.2",
     "semantic-release": "^25.0.5",
