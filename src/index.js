@@ -19,8 +19,8 @@ export function baseUrl(base) {
         return;
       }
 
-      if (token.href.startsWith('#')) {
-        // the URL is a local reference
+      if (['#', 'mailto:', 'tel:', 'sms:'].some(i => token.href.startsWith(i))) {
+        // the URL is a local reference or a whitelisted URL scheme
         return;
       }
 
