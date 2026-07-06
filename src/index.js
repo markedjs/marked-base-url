@@ -2,7 +2,7 @@ export function baseUrl(base) {
   // extension code here
 
   base = base.trim().replace(/\/+$/, '/'); // if multiple '/' at the end, just keep one
-  const reIsAbsolute = /^[\w+]+:\/\//;
+  const reIsAbsolute = /^[a-z][a-z0-9+.-]*:/i;
   const isBaseAbsolute = reIsAbsolute.test(base);
   const dummyUrl = 'http://__dummy__';
   const dummyBaseUrl = new URL(base, dummyUrl);
@@ -19,8 +19,8 @@ export function baseUrl(base) {
         return;
       }
 
-      if (['#', 'mailto:', 'tel:', 'sms:'].some(i => token.href.startsWith(i))) {
-        // the URL is a local reference or a whitelisted URL scheme
+      if (token.href.startsWith('#')) {
+        // the URL is a local reference
         return;
       }
 
