@@ -123,8 +123,15 @@ describe('baseUrl', () => {
     assert.strictEqual(marked.parse('[my url](#anchor)'), '<p><a href="#anchor">my url</a></p>\n');
   });
 
-  test('URL scheme link', () => {
+  test('absolute baseUrl with url scheme link', () => {
     marked.use(baseUrl('http://example.com/'));
+    assert.strictEqual(marked.parse('[mailto](mailto:test@example.com)'), '<p><a href="mailto:test@example.com">mailto</a></p>\n');
+    assert.strictEqual(marked.parse('[tel](tel:+123456789)'), '<p><a href="tel:+123456789">tel</a></p>\n');
+    assert.strictEqual(marked.parse('[sms](sms:+123456789)'), '<p><a href="sms:+123456789">sms</a></p>\n');
+  });
+
+  test('relative baseUrl with url scheme link', () => {
+    marked.use(baseUrl('/a/b/c/'));
     assert.strictEqual(marked.parse('[mailto](mailto:test@example.com)'), '<p><a href="mailto:test@example.com">mailto</a></p>\n');
     assert.strictEqual(marked.parse('[tel](tel:+123456789)'), '<p><a href="tel:+123456789">tel</a></p>\n');
     assert.strictEqual(marked.parse('[sms](sms:+123456789)'), '<p><a href="sms:+123456789">sms</a></p>\n');
