@@ -38,6 +38,10 @@ export function baseUrl(base) {
         }
         try {
           const temp = new URL(token.href, dummyBaseUrl).href;
+          if (temp === token.href) {
+            // the URL is an absolute URL
+            return;
+          }
           token.href = temp.slice(dummyUrlLength);
         } catch {
           // ignore
