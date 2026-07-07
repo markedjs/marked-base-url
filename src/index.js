@@ -2,8 +2,7 @@ export function baseUrl(base) {
   // extension code here
 
   base = base.trim().replace(/\/+$/, '/'); // if multiple '/' at the end, just keep one
-  const reIsAbsolute = /^[\w+]+:\/\//;
-  const isBaseAbsolute = reIsAbsolute.test(base);
+  const isBaseAbsolute = URL.canParse(base);
   const dummyUrl = 'http://__dummy__';
   const dummyBaseUrl = new URL(base, dummyUrl);
   const dummyUrlLength = dummyUrl.length + (base.startsWith('/') ? 0 : 1);
@@ -14,8 +13,8 @@ export function baseUrl(base) {
         return;
       }
 
-      if (reIsAbsolute.test(token.href)) {
-        // the URL is absolute, do not touch it
+      if (URL.canParse(token.href)) {
+        // the URL is absolute
         return;
       }
 
